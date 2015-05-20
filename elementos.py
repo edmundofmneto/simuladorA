@@ -23,13 +23,13 @@ class EnergyConsumer(object):
 
 
 class Substation(object):
-    def __init__(self, nome, tensao_primario, tensao_secundario, potencia, impedancia):
+    def __init__(self, nome, tensao_primario, tensao_secundario, potencia, impedancia_pos, impedancia_zero):
         self.nome = nome
         self.tensao_primario = tensao_primario
         self.tensao_secundario = tensao_secundario
         self.potencia = potencia
-        self.impedancia = impedancia
-        
+        self.impedancia_pos = impedancia_pos
+        self.impedancia_zero = impedancia_zero        
 
 class BusBarSection(object):
     def __init__(self,nome=None, phases = None):

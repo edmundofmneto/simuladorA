@@ -37,6 +37,21 @@ class ConductorDialog(QtGui.QWidget):
         self.formLayout.setContentsMargins(0, 0, 0, 0)
         self.formLayout.setObjectName("formLayout")
 
+        # # Definição da COMBOBOX
+        # self.selconLabel = QtGui.QLabel(self.formLayoutWidget)
+        # self.selconLabel.setObjectName("selconLabel")
+        # self.formLayout.setWidget(4, QtGui.QFormLayout.LabelRole, self.testeLabel)
+        # self.testeLineEdit = QtGui.QComboBox(self.formLayoutWidget)
+        # self.testeLineEdit.setObjectName("testeEdit")
+        # self.testeLineEdit.addItems(self.scene.dict_prop.keys())
+        # self.testeLineEdit.insertItem(0,'Custom')
+        # index = self.testeLineEdit.findText(self.item.text_config)
+        # # if index < 0:
+        # #     index = 0
+        # self.testeLineEdit.setCurrentIndex(index)
+        # self.formLayout.setWidget(4, QtGui.QFormLayout.FieldRole, self.testeLineEdit)
+        # self.testeLineEdit.currentIndexChanged.connect(self.update_values)
+
         self.comprimentoLabel = QtGui.QLabel(self.formLayoutWidget)
         self.comprimentoLabel.setObjectName("comprimentoLabel")
         self.formLayout.setWidget(0, QtGui.QFormLayout.LabelRole, self.comprimentoLabel)

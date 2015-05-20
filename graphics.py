@@ -12,7 +12,7 @@ from DialogSubstation import SubstationDialog
 from DialogEnergyConsumer import EnergyConsumerDialog
 from aviso_conexao import AvisoConexaoDialog
 from avisoReligador import AvisoReligador
-from avisoNome import AvisoNome
+#from avisoNome import AvisoNome
 
 lista_no_conectivo = []
 
@@ -358,7 +358,7 @@ class Node(QtGui.QGraphicsRectItem):
             rect = QtCore.QRectF(0, 0, 50.0, 50.0)
             # definine e ajusta a posicao do label do item grafico
             self.text = Text('', self, self.scene())
-            self.substation = Substation(self.text.toPlainText(), 0.0, 0.0, 0.0, complex(0,0))
+            self.substation = Substation(self.text.toPlainText(), 0.0, 0.0, 0.0,complex(0,0), complex(0,0))
             self.text.setPos(self.mapFromItem(self.text, 0, rect.height()))
         # caso o item a ser inserido seja do tipo religador
         elif self.myItemType == self.Religador:
@@ -1462,10 +1462,41 @@ class SceneWidget(QtGui.QGraphicsScene):
                         else:
                             item.text.setPlainText(dialog.nomeLineEdit.text())
                             item.substation.nome = dialog.nomeLineEdit.text()
+                        
                         if dialog.tpLineEdit.text() == "":
                             pass
                         else:
                             item.substation.tensao_primario = dialog.tpLineEdit.text()
+                        
+                        if dialog.tsLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.tensao_secundario = dialog.tsLineEdit.text()
+                        
+                        if dialog.potLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.potencia = dialog.potLineEdit.text()
+                        
+                        if dialog.resistenciaposLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.impedancia_pos.real = dialog.resistenciaposLineEdit.text()
+                        
+                        if dialog.reaposLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.impedancia_pos.imag = dialog.reaposLineEdit.text()
+                        
+                        if dialog.resistenciazeroLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.impendancia_zero.real = dialog.resistenciazeroLineEdit.text()
+                        
+                        if dialog.reazeroLineEdit.text() == "":
+                            pass
+                        else:
+                            item.substation.impendancia_zero.imag = dialog.reazeroLineEdit.text()    
                     else:
                         return dialog.dialog.result()
 

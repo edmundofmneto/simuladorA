@@ -113,7 +113,7 @@ class DiagramToXML(ElementTree.Element):
                     potencia.text = str(item.substation.potencia)
 
                     impedancia = ElementTree.Element('impedancia')
-                    impedancia.text = str(item.substation.impedancia)
+                    impedancia.text = str(item.substation.impedancia_zero)
 
                     CE.append(identificador)
                     CE.append(tensao_p)
@@ -389,6 +389,27 @@ class CimXML():
                     tag_id = self.cim_xml.new_tag("mRID")
                     tag_id.append(str(item.id))
                     self.cim_xml.find("Substation").append(tag_id)
+
+                    tag_potap = self.cim_xml.new_tag("potenciaAparente")
+                    tag_potap.append(str(item.substation.potencia))
+                    tag_substation.append(tag_potap)
+
+                    tag_z = self.cim_xml.new_tag("impedania")
+                    tag_zpos = self.cim_xml.new_tag("impedanciaPositiva")
+                    tag_zzero = self.cim_xml.new_tag("impedaniaZero")
+                    tag_z.append(tag_zpos)
+                    tag_zpos.append(str(item.substation.impedancia_pos))
+                    tag_z.append(tag_zzero)
+                    tag_zzero.append(str(item.substation.impedancia_zero))
+                    tag_substation.append(tag_z)
+
+                    tag_tensaopri = self.cim_xml.new_tag("tensaoPrimario")
+                    tag_tensaopri.append(str(item.substation.tensao_primario))
+                    tag_substation.append(tag_tensaopri)
+
+                    tag_tensaosec = self.cim_xml.new_tag("tensao_Secundario")
+                    tag_tensaosec.append(str(item.substation.tensao_secundario))
+                    tag_substation.append(tag_tensaosec)
 
                     tag_terminal1= self.cim_xml.new_tag("terminal")
                     tag_seqNumber = self.cim_xml.new_tag("SequenceNumber")
